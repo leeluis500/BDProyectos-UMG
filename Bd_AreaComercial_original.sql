@@ -44,7 +44,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- --------------------------------------------------------COMPRAS--------------------------------------------
-
 -- -----------------------------------------------------
 -- Table `areacomercial`.`tbl_proveedor`
 -- -----------------------------------------------------
@@ -75,7 +74,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 -- -----------------------------------------------------
--- Table `areacomercial`.`tbl_compras`
+-- Table `areacomercial`.`tbl_compra`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `areacomercial`.`tbl_compra` (
   `PK_id_proveedor` INT NOT NULL,
@@ -86,10 +85,16 @@ CREATE TABLE IF NOT EXISTS `areacomercial`.`tbl_compra` (
   `cantidad_producto` INT(200) NOT NULL,
   `total_monto`  INT(200) NOT NULL,
 PRIMARY KEY (`PK_id_proveedor`,`PK_id_producto`),
-FOREIGN KEY (`PK_id_proveedor`) REFERENCES `tbl_proveedor`(`PK_id_proveedor`),
-FOREIGN KEY (`PK_id_producto`) REFERENCES `tbl_producto`(`PK_id_producto`))    
+CONSTRAINT `fk_tbl_proveedor1`
+FOREIGN KEY (`PK_id_proveedor`)
+REFERENCES `areacomercial`.`tbl_proveedor` (`PK_id_proveedor`),
+CONSTRAINT `fk_tbl_producto1`
+FOREIGN KEY (`PK_id_producto`)
+REFERENCES `areacomercial`.`tbl_producto` (`PK_id_producto`))    
+  
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
 
 
 
@@ -181,3 +186,4 @@ producto VARCHAR(25)  NOT NULL,
   )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+ 
