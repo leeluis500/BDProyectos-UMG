@@ -17,13 +17,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `umg` DEFAULT CHARACTER SET utf8 ;
 USE `umg` ;
 
-CREATE TABLE IF NOT EXISTS `umg`.`tbl_login` (
-  `PK_id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `username_login` VARCHAR(60) NOT NULL,
-  `password_login` VARCHAR(25)NOT NULL,
-  PRIMARY KEY (`PK_id_usuario`) )
-ENGINE = InnoDB CHARACTER SET = latin1;
-
 -- -----------------------------------------------------
 -- Table `umg`.`tbl_modulo`
 -- -----------------------------------------------------
@@ -35,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `umg`.`tbl_modulo` (
   PRIMARY KEY (`PK_id_Modulo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+INSERT INTO `umg`.`tbl_modulo` (`PK_id_Modulo`, `nombre_modulo`, `descripcion_modulo`, `estado_modulo`) VALUES ('1', 'Modulo 1', 'Esta es una prueba de un módulo.', '1');
 
 
 -- -----------------------------------------------------
@@ -57,10 +51,10 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `umg`.`tbl_usuario` (
   `PK_id_usuario` VARCHAR(25) NOT NULL,
   `nombre_usuario` VARCHAR(45) NULL DEFAULT NULL,
-  `apellido_usuarios` VARCHAR(45) NULL DEFAULT NULL,
+  `apellido_usuario` VARCHAR(45) NULL DEFAULT NULL,
   `username_usuario` VARCHAR(45) NULL DEFAULT NULL,
   `password_usuario` VARCHAR(45) NULL DEFAULT NULL,
-  `correo_usuarios` VARCHAR(45) NULL DEFAULT NULL,
+  `correo_usuario` VARCHAR(45) NULL DEFAULT NULL,
   `cambio_password` TINYINT NULL DEFAULT NULL,
   `estado_usuario` TINYINT NULL DEFAULT NULL,
   `ultima_conexion` DATETIME NULL DEFAULT NULL,
@@ -68,23 +62,19 @@ CREATE TABLE IF NOT EXISTS `umg`.`tbl_usuario` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
 -- -----------------------------------------------------
 -- Table `umg`.`tbl_bitacora`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `umg`.`tbl_bitacora` (
   `PK_id_bitacora` INT NOT NULL AUTO_INCREMENT,
   `PK_id_usuario` VARCHAR(25) NOT NULL,
-  `fecha` DATE NULL DEFAULT NULL,
-  `hora` TIME NULL DEFAULT NULL,
-  `host` VARCHAR(45) NULL DEFAULT NULL,
+  `fecha` VARCHAR(25) NULL DEFAULT NULL,
+  `hora` VARCHAR(25) NULL DEFAULT NULL,
+  `host1` VARCHAR(45) NULL DEFAULT NULL,
   `ip` VARCHAR(25) NULL DEFAULT NULL,
   `accion` VARCHAR(50) NULL DEFAULT NULL,
   `tabla` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`PK_id_bitacora`, `PK_id_usuario`),
-    CONSTRAINT `fk_Bitacora_Usuario1`
-    FOREIGN KEY (`PK_id_usuario`)
-    REFERENCES `umg`.`tbl_usuario` (`PK_id_usuario`))
+  PRIMARY KEY (`PK_id_bitacora`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -100,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `umg`.`tbl_perfil_encabezado` (
   PRIMARY KEY (`PK_id_perfil`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+INSERT INTO `umg`.`tbl_perfil_encabezado` (`PK_id_perfil`, `nombre_perfil`, `descripcion_perfil`, `estado_perfil`) VALUES ('1', 'perfil1', 'prueba en el perfil 1', '1');
 
 
 -- -----------------------------------------------------
@@ -146,6 +137,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+
 -- -----------------------------------------------------
 -- Table `umg`.`tbl_usuario_perfil`
 -- -----------------------------------------------------
@@ -178,3 +170,22 @@ CREATE TABLE IF NOT EXISTS `umg`.`tbl_aplicacion_a_modulos` (
     REFERENCES `umg`.`tbl_modulo` (`PK_id_Modulo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `tbl_usuario` (`PK_id_usuario`, `nombre_usuario`, `apellido_usuario`, `username_usuario`, `password_usuario`, `correo_usuario`, `cambio_password`, `estado_usuario`, `ultima_conexion`) VALUES ('1', 'jefferson', 'davila', 'jeff', '123', 'jeff@gmail.com', '1', '1', '2021-05-02 21:00:48');
+INSERT INTO `tbl_usuario` (`PK_id_usuario`, `nombre_usuario`, `apellido_usuario`, `username_usuario`, `password_usuario`, `correo_usuario`, `cambio_password`, `estado_usuario`, `ultima_conexion`) VALUES ('2', 'esduardo', 'delaguila', 'esduardo10', '123', 'esduardo@gmail.com', '1', '1', '2021-05-02 21:00:48');
+
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2001', 'Mantenimiento Ama de Llaves', 'esta es una prueba', '1', '1');
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2002', 'Mantenimiento de Formas de pago', 'esta es una prueba','4', '1');
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2003', 'Mantenimiento de Habitaciones', 'esta es una prueba', '3', '1');
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2004', 'Mantenimiento de Clientes', 'esta es una prueba', '5', '1');
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2005', 'Mantenimiento de Pisos', 'esta es una prueba', '6', '1');
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2006', 'Mantenimiento de Servicios', 'esta es una prueba', '2', '1');
+INSERT INTO `tbl_aplicacion` (`PK_id_aplicacion`, `nombre_aplicacion`, `descripcion_aplicacion`, `no_reporteAsociado`, `estado_aplicacion`) VALUES ('2201', 'Procesos', 'esta es una prueba', '2', '1');
+
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('2', '2001', '1', '1', '1', '1', '1');
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('2', '2002', '1', '1', '1', '1', '1');
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('2', '2003', '1', '1', '1', '1', '1');
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('2', '2004', '1', '1', '1', '1', '1');
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('2', '2005', '1', '1', '1', '1', '1');
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('2', '2006', '1', '1', '1', '1', '1');
+INSERT INTO `tbl_usuario_aplicacion` (`PK_id_usuario`, `PK_id_aplicacion`, `ingresar`, `consulta`, `modificar`, `eliminar`, `imprimir`) VALUES ('1', '2201', '1', '1', '1', '1', '1');
