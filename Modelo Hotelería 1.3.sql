@@ -152,3 +152,18 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_facturacion` (
   FOREIGN KEY (`PK_id_reservacion`) REFERENCES `tbl_reservaciones`(`PK_id_reservacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `hoteleria`.`tbl_objetosperdidos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_objetosperdidos` (
+  `PK_id_objeto` INT NOT NULL AUTO_INCREMENT,
+  `PK_id_habitacion` INT DEFAULT NULL,
+  `PK_id_ama_de_llaves` INT DEFAULT NULL,
+  `fecha_encontrado` date NULL DEFAULT NULL,
+  `objeto` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`PK_id_objeto`),
+    FOREIGN KEY (`PK_id_habitacion`) REFERENCES `tbl_mantenimiento_habitaciones`(`PK_id_habitacion`),
+  FOREIGN KEY (`PK_id_ama_de_llaves`) REFERENCES `tbl_ama_de_llaves`(`PK_id_ama_de_llaves`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
