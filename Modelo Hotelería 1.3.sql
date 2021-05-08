@@ -102,14 +102,16 @@ INSERT INTO `hoteleria`.`tbl_servicios` (`PK_id_servicio`, `nombre_servicio`, `d
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_reservaciones` (
   `PK_id_reservacion` INT NOT NULL,
-  `PK_DPI` INT DEFAULT NULL,
-  `PK_id_trabajado` INT DEFAULT NULL,
+  `PK_no_identificacion` INT DEFAULT NULL,
   `PK_id_habitacion` INT DEFAULT NULL,
   `fecha_reserva` date NULL DEFAULT NULL,
   `desde` date NULL DEFAULT NULL,
   `hasta` date NULL DEFAULT NULL,
+  `precio` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
   PRIMARY KEY (`PK_id_reservacion`),
-  FOREIGN KEY (`PK_id_habitacion`) REFERENCES `tbl_mantenimiento_habitaciones`(`PK_id_habitacion`))
+  FOREIGN KEY (`PK_id_habitacion`) REFERENCES `tbl_mantenimiento_habitaciones`(`PK_id_habitacion`),
+  FOREIGN KEY (`PK_no_identificacion`) REFERENCES `tbl_huespedes`(`PK_no_identificacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -126,5 +128,27 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_metodo_pago` (
   `precio_pagado` INT(45) NULL DEFAULT NULL,
   PRIMARY KEY (`PK_id_transaccion`),
   FOREIGN KEY (`PK_id_transaccion`) REFERENCES `tbl_reservaciones`(`PK_id_reservacion`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `hoteleria`.`tbl_facturacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_facturacion` (
+  `PK_id_factura` INT NOT NULL,
+  `PK_id_reservacion` INT NOT NULL,
+  `nombre_factura` VARCHAR(50) NULL DEFAULT NULL,
+  `fechaEntrada_factura` VARCHAR(20) NULL DEFAULT NULL,
+  `fechaSalida_factura` VARCHAR(20) NULL DEFAULT NULL,
+  `formaPago_factura` VARCHAR(20) NULL DEFAULT NULL,
+  `noTarjeta_factura` INT(50) NULL DEFAULT NULL,
+  `cvv_factura` INT(10) NULL DEFAULT NULL,
+  `fechaCaducidad_factura` VARCHAR(20) NULL DEFAULT NULL,
+  `serviciosAsignados_factura` VARCHAR(20) NULL DEFAULT NULL,
+  `totalReservacion_factura` INT(100) NULL DEFAULT NULL,
+  `totalServicios_factura` INT(100) NULL DEFAULT NULL,
+  `totalFacturacion_factura` INT(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`PK_id_factura`),
+  FOREIGN KEY (`PK_id_reservacion`) REFERENCES `tbl_reservaciones`(`PK_id_reservacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
