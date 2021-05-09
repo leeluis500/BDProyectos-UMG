@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_metodos_de_pago` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 INSERT INTO `hoteleria`.`tbl_metodos_de_pago` (`PK_id_metodo`, `nombre_metodo`, `descripcion_metodo`, `estado_metodo`) VALUES ('1', 'Tarjeta', 'Pago con tarjeta', '1');
+INSERT INTO `hoteleria`.`tbl_metodos_de_pago` (`PK_id_metodo`, `nombre_metodo`, `descripcion_metodo`, `estado_metodo`) VALUES ('2', 'Efectivo', 'Pago en efectivo', '1');
 
 -- -----------------------------------------------------
 -- Table `hoteleria`.`tbl_huespedes`
@@ -117,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_reservaciones` (
   FOREIGN KEY (`PK_no_identificacion`) REFERENCES `tbl_huespedes`(`PK_no_identificacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+INSERT INTO `hoteleria`.`tbl_reservaciones` (`PK_id_reservacion`, `PK_no_identificacion`, `PK_id_habitacion`, `fecha_reserva`, `desde`, `hasta`, `precio`, `estado`) VALUES ('1', '1', '1', '2021-04-17', '2021-04-19', '2021-04-22', '500', '1');
 
 -- -----------------------------------------------------
 -- Table `hoteleria`.`tbl_facturacion`
