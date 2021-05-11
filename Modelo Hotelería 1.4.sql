@@ -156,6 +156,10 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_objetosperdidos` (
   FOREIGN KEY (`PK_id_ama_de_llaves`) REFERENCES `tbl_ama_de_llaves`(`PK_id_ama_de_llaves`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `hoteleria`.`tbl_entrega_habitacion`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_entrega_habitacion` (
   `PK_id_entrega` INT NOT NULL ,
   `no_factura` INT DEFAULT NULL,
