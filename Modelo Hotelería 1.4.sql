@@ -168,6 +168,8 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_entrega_habitacion` (
    `no_reserva` INT DEFAULT NULL,
   `fecha`  date NULL DEFAULT NULL,
   `estado`VARCHAR(50) NULL DEFAULT NULL,
-  PRIMARY KEY (`PK_id_entrega`))
+  PRIMARY KEY (`PK_id_entrega`),
+  FOREIGN KEY (`no_factura`) REFERENCES `tbl_facturacion`(`PK_id_factura`),
+  FOREIGN KEY (`PK_id_habitacion`) REFERENCES `tbl_reservaciones`(`PK_id_reservacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
