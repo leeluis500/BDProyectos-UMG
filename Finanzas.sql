@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 DROP DATABASE finanzas;
 CREATE DATABASE finanzas;
+USE finanzas;
 
 CREATE TABLE `asientocontabledetalle` (
   `Codigo_DetalleAsiento` varchar(100) NOT NULL,
