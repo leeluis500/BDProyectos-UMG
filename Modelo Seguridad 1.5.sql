@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS `umg`.`tbl_modulo` (
   PRIMARY KEY (`PK_id_Modulo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-INSERT INTO `umg`.`tbl_modulo` (`PK_id_Modulo`, `nombre_modulo`, `descripcion_modulo`, `estado_modulo`) VALUES ('1', 'Modulo 1', 'Esta es una prueba de un módulo.', '1');
+INSERT INTO `umg`.`tbl_modulo` (`PK_id_Modulo`, `nombre_modulo`, `descripcion_modulo`, `estado_modulo`) VALUES ('2000', 'Hotelería', 'Asignación', '1');
+INSERT INTO `umg`.`tbl_modulo` (`PK_id_Modulo`, `nombre_modulo`, `descripcion_modulo`, `estado_modulo`) VALUES ('3000', 'Comercial', 'Asignación', '1');
 
 -- -----------------------------------------------------
 -- Table `umg`.`tbl_aplicacion`
@@ -78,8 +79,7 @@ PRIMARY KEY (`PK_id_bitacora`),
  FOREIGN KEY (`PK_id_Modulo`)
 REFERENCES `umg`.`tbl_modulo` (`PK_id_Modulo`)
 )
-
- ENGINE = InnoDB
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -170,8 +170,6 @@ CREATE TABLE IF NOT EXISTS `umg`.`tbl_aplicacion_a_modulos` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
-INSERT INTO `umg`.`tbl_modulo` (`PK_id_Modulo`, `nombre_modulo`, `descripcion_modulo`, `estado_modulo`) VALUES ('3000', 'comercial', 'asignacion', '1');
 
 -- -----------------------------------------------------
 -- Insert usuarios (Hoteleria)
