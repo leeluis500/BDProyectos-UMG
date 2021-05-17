@@ -52,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_mantenimiento_habitaciones` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación Grande', '250', '1', '1', 'Matrimonial');
-INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación pequeña', '250', '1', '1', 'Individual');
-INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación extra grande', '250', '1', '1', 'Matrimonial');
-INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación pequeña', '250', '1', '1', 'Individual');
-INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación Grande', '250', '1', '1', 'Matrimonial');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('2', 'Habitación pequeña', '250', '1', '1', 'Individual');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('3', 'Habitación extra grande', '250', '1', '1', 'Matrimonial');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('4', 'Habitación pequeña', '250', '1', '1', 'Individual');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('5', 'Habitación Grande', '250', '1', '1', 'Matrimonial');
 
 -- -----------------------------------------------------
 -- Table `hoteleria`.`tbl_metodos_de_pago`
@@ -177,17 +177,17 @@ INSERT INTO `hoteleria`.`tbl_objetosperdidos` (`PK_id_objeto`, `PK_id_habitacion
 -- -----------------------------------------------------
 -- Table `hoteleria`.`tbl_entrega_habitacion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS hoteleria.tbl_entrega_habitacion (
-  PK_id_entrega INT NOT NULL ,
-  PK_id_reservacion INT DEFAULT NULL,
-  PK_id_habitacion INT DEFAULT NULL,
-  PK_no_identificacion INT DEFAULT NULL,
-  nombre VARCHAR(50) NULL DEFAULT NULL,
-  fecha  date NULL DEFAULT NULL,
-  estado VARCHAR(50) NULL DEFAULT NULL,
-  PRIMARY KEY (PK_id_entrega),
-  FOREIGN KEY (PK_id_habitacion) REFERENCES tbl_mantenimiento_habitaciones(PK_id_habitacion),
-  FOREIGN KEY (PK_id_reservacion) REFERENCES tbl_reservaciones(PK_id_reservacion),
-  FOREIGN KEY (PK_no_identificacion) REFERENCES tbl_huespedes(PK_no_identificacion))
+CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_entrega_habitacion` (
+  `PK_id_entrega` INT NOT NULL ,
+  `PK_id_reservacion` INT DEFAULT NULL,
+  `PK_id_habitacion` INT DEFAULT NULL,
+  `PK_no_identificacion` INT DEFAULT NULL,
+  `nombre` VARCHAR(50) NULL DEFAULT NULL,
+  `fecha`  date NULL DEFAULT NULL,
+  `estado` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`PK_id_entrega`),
+  FOREIGN KEY (`PK_id_habitacion`) REFERENCES `tbl_mantenimiento_habitaciones`(`PK_id_habitacion`),
+  FOREIGN KEY (`PK_id_reservacion`) REFERENCES `tbl_reservaciones`(`PK_id_reservacion`),
+  FOREIGN KEY (`PK_no_identificacion`) REFERENCES `tbl_huespedes`(`PK_no_identificacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
