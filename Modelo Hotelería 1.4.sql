@@ -52,6 +52,10 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_mantenimiento_habitaciones` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación Grande', '250', '1', '1', 'Matrimonial');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación pequeña', '250', '1', '1', 'Individual');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación extra grande', '250', '1', '1', 'Matrimonial');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación pequeña', '250', '1', '1', 'Individual');
+INSERT INTO `hoteleria`.`tbl_mantenimiento_habitaciones` (`PK_id_habitacion`, `descripcion_habitacion`, `precio_habitacion`, `piso_habitaciones`, `estado_habitacion`, `tipo_de_habitacion`) VALUES ('1', 'Habitación Grande', '250', '1', '1', 'Matrimonial');
 
 -- -----------------------------------------------------
 -- Table `hoteleria`.`tbl_metodos_de_pago`
@@ -123,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `hoteleria`.`tbl_reservaciones` (
   FOREIGN KEY (`PK_no_identificacion`) REFERENCES `tbl_huespedes`(`PK_no_identificacion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-INSERT INTO `tbl_reservaciones` (`PK_id_reservacion`, `PK_no_identificacion`, `PK_id_habitacion`, `cantidad_personas`, `fecha_reserva`, `desde`, `hasta`, `precio`, `estado`) VALUES ('1', '1', '1', '2 adultos y 2 niños', '2021-05-15', '2021-05-16', '2021-05-20', '750', '1');
+INSERT INTO `tbl_reservaciones` (`PK_id_reservacion`, `PK_no_identificacion`, `PK_id_habitacion`, `cantidad_personas`, `fecha_reserva`, `desde`, `hasta`, `precio`, `estado`) VALUES ('1', '1', '1', '2 adultos y 2 niños', '2021-05-15', '2021-05-16', '2021-05-20', '750', '0');
 
 -- -----------------------------------------------------
 -- Table `hoteleria`.`tbl_facturacion`
